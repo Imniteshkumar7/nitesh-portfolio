@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitesh Vishwakarma | Full Stack Web Developer</title>
+  <meta name="description" content="B.Tech Computer Science Engineering student and aspiring Full Stack Web Developer building modern web applications with React, Node.js and Express.js.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nitesh Vishwakarma | Full Stack Web Developer">
+  <meta property="og:description" content="B.Tech Computer Science Engineering student building modern web applications using React, Node.js and Express.js.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;700&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Preloader Screen -->
+  <div id="loader" class="loader-screen">
+    <div class="loader-content">
+      <div class="loader-spinner-wrapper">
+        <svg class="loader-ring" viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="44"></circle>
+          <circle id="ringProgress" class="ring-fg" cx="50" cy="50" r="44"></circle>
+        </svg>
+        <div class="loader-percent" id="loaderPercent">0%</div>
+      </div>
+      <div class="loader-text-group">
+        <h2 class="loader-title">NITESH VISHWAKARMA</h2>
+      </div>
+      <div class="loader-bar-container">
+        <div class="loader-bar-fill" id="loaderBarFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Frame Canvas (Fixed in viewport behind website content) -->
+  <div class="canvas-background-container">
+    <canvas id="frameCanvas"></canvas>
+    <div class="canvas-overlay-mask"></div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="header-left">
+      <span class="role-badge">FULL STACK DEVELOPER</span>
+      <span class="role-divider">/</span>
+      <span class="role-badge">CSE STUDENT</span>
+    </div>
+
+    <nav class="nav-menu" id="navMenu">
+      <a href="#hero" class="nav-link">HOME</a>
+      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#projects" class="nav-link">PROJECTS</a>
+      <a href="#hackathon" class="nav-link">HACKATHON</a>
+      <a href="#skills" class="nav-link">SKILLS</a>
+      <a href="#contact" class="nav-link">CONTACT</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="#contact" class="freelance-badge">
+        <span>LET'S CONNECT</span>
+        <span class="star-icon">⟶</span>
+      </a>
+      <button id="btnMobileNav" class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Content Container -->
+  <main class="page-wrapper" id="pageWrapper">
+    
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      
+      <!-- Huge Giant Background Typography -->
+      <div class="giant-bg-text-wrapper">
+        <h1 class="giant-bg-text">DEVELOPER</h1>
+      </div>
+
+      <!-- Hero Overlay Content Grid -->
+      <div class="hero-grid">
+        
+        <!-- Left Hero Info -->
+        <div class="hero-left">
+          <div class="script-greeting">Hello, I'm</div>
+          <h2 class="hero-name">NITESH<br><span class="surname">VISHWAKARMA</span></h2>
+          <div class="hero-subtitle">FULL STACK WEB DEVELOPER</div>
+          
+          <p class="hero-bio">
+            I build modern, responsive web applications using React, Node.js and Express.js. I enjoy turning ideas into practical digital products and continuously improving my development skills.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              <span>VIEW PROJECTS</span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <a href="https://github.com/Imniteshkumar7" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <span>GITHUB</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+          </div>
+
+          <div class="hero-social-links">
+            <a href="https://github.com/Imniteshkumar7" target="_blank" rel="noopener noreferrer" class="hero-social-pill" title="GitHub Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/imniteshkumar/" target="_blank" rel="noopener noreferrer" class="hero-social-pill" title="LinkedIn Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 1 0 0 2.94 1.47 1.47 0 0 0 0-2.94z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://leetcode.com/u/vishwakarmanitesh7/" target="_blank" rel="noopener noreferrer" class="hero-social-pill" title="LeetCode Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.758-1.823.758s-1.357-.291-1.823-.758l-5.632-5.467C3.66 14.596 3.37 13.947 3.37 13.23s.29-1.366.758-1.838l5.632-5.467c.466-.467 1.111-.758 1.823-.758s1.357.291 1.823.758l2.697 2.607a.998.998 0 0 1-1.411 1.411l-2.697-2.607a.576.576 0 0 0-.412-.172c-.155 0-.3.06-.412.172l-5.632 5.467a.584.584 0 0 0-.172.417c0 .155.06.3.172.412l5.632 5.467c.112.112.257.172.412.172s.3-.06.412-.172l2.697-2.607a.998.998 0 0 1 1.411 1.411zM20.63 12a.998.998 0 0 1-1 1h-8.5a1 1 0 1 1 0-2h8.5a.998.998 0 0 1 1 1z"/></svg>
+              <span>LeetCode</span>
+            </a>
+          </div>
+
+          <div class="hero-status">
+            <span class="status-dot">✦</span>
+            <span>OPEN TO INTERNSHIPS & FREELANCE</span>
+          </div>
+        </div>
+
+        <!-- Center Frame Area -->
+        <div class="hero-center">
+          <div class="floating-vision-badge">
+            <span class="badge-star">✦</span>
+            <p>Building real-world web applications & solving practical problems.</p>
+          </div>
+        </div>
+
+        <!-- Right Factual Indicators (NO Fake Numbers) -->
+        <div class="hero-right">
+          <div class="stat-card">
+            <div class="stat-number">CSE</div>
+            <div class="stat-label">B.TECH COMPUTER SCIENCE<br>ENGINEERING STUDENT</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-number">FULL<span class="accent-plus">STACK</span></div>
+            <div class="stat-label">REACT, NODE.JS<br>& EXPRESS.JS</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-number">DSA</div>
+            <div class="stat-label">C++ & PROBLEM SOLVING<br>PRACTICE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section class="about-me-section" id="about">
+      <div class="about-container">
+        <div class="about-header">
+          <span class="section-tag">// WHO I AM</span>
+          <h2 class="section-title">ABOUT ME</h2>
+        </div>
+        <div class="about-content-card">
+          <p class="about-paragraph">
+            I'm <strong class="text-highlight">Nitesh Vishwakarma</strong>, a Computer Science Engineering student focused on building my career as a Full Stack Web Developer.
+          </p>
+          <p class="about-paragraph">
+            I enjoy building modern web applications using React, Node.js and Express.js. I like solving programming problems, exploring new technologies, and turning ideas into working products.
+          </p>
+          <p class="about-paragraph">
+            Currently, I'm focused on improving my full-stack development skills, Data Structures & Algorithms in C++, and building real-world project experience.
+          </p>
+          
+          <div class="about-highlights-grid">
+            <div class="highlight-item">
+              <span class="hl-icon">🎓</span>
+              <div class="hl-text">
+                <span class="hl-title">Education</span>
+                <span class="hl-sub">B.Tech Computer Science & Engineering</span>
+              </div>
+            </div>
+
+            <div class="highlight-item">
+              <span class="hl-icon">💻</span>
+              <div class="hl-text">
+                <span class="hl-title">Primary Stack</span>
+                <span class="hl-sub">React.js, Node.js, Express.js, MongoDB</span>
+              </div>
+            </div>
+
+            <div class="highlight-item">
+              <span class="hl-icon">🚀</span>
+              <div class="hl-text">
+                <span class="hl-title">Goal</span>
+                <span class="hl-sub">Seeking Web & Software Dev Opportunities</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED PROJECTS SECTION -->
+    <section class="projects-section" id="projects">
+      <div class="section-header">
+        <div class="header-title-group">
+          <span class="section-tag">// FEATURED WORK</span>
+          <h2 class="section-title">SELECTED PROJECTS</h2>
+          <div class="title-line"></div>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 01: DhanSarthi -->
+        <article class="project-card" data-project="dhansarthi">
+          <div class="project-image-wrapper">
+            <img src="/assets/project_dhansarthi.jpg" alt="DhanSarthi AI-Powered Financial Advisory Application" class="project-image" />
+            <div class="project-hover-overlay">
+              <span class="hover-btn">VIEW CASE STUDY ↗</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">01</div>
+            <div class="project-meta">
+              <h3 class="project-title">DHANSARTHI</h3>
+              <p class="project-category">AI-POWERED FINANCIAL ADVISORY APPLICATION</p>
+            </div>
+            <div class="project-arrow">⟶</div>
+          </div>
+        </article>
+
+        <!-- Project 02: Student Event Portal -->
+        <article class="project-card" data-project="eventportal">
+          <div class="project-image-wrapper">
+            <img src="/assets/project_event_portal.jpg" alt="Student Event Portal" class="project-image" />
+            <div class="project-hover-overlay">
+              <span class="hover-btn">VIEW CASE STUDY ↗</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">02</div>
+            <div class="project-meta">
+              <h3 class="project-title">STUDENT EVENT PORTAL</h3>
+              <p class="project-category">FULL STACK WEB APPLICATION</p>
+            </div>
+            <div class="project-arrow">⟶</div>
+          </div>
+        </article>
+
+        <!-- Project 03: More Projects Showcase -->
+        <article class="project-card project-card-upcoming" data-project="upcoming">
+          <div class="project-image-wrapper upcoming-wrapper">
+            <div class="upcoming-content">
+              <span class="upcoming-icon">⚡</span>
+              <h3>MORE PROJECTS COMING SOON</h3>
+              <p>Actively building full-stack React & Node.js applications</p>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">03</div>
+            <div class="project-meta">
+              <h3 class="project-title">IN DEVELOPMENT</h3>
+              <p class="project-category">REAL-WORLD APPLICATIONS</p>
+            </div>
+            <div class="project-arrow">⟶</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HACKATHON & AI INNOVATION FEATURE SECTION -->
+    <section class="hackathon-section" id="hackathon">
+      <div class="hackathon-card">
+        <div class="hackathon-badge-tag">
+          <span class="star-icon">✦</span>
+          <span>FLAGSHIP AI PROJECT & HACKATHON FEATURE</span>
+        </div>
+        
+        <div class="hackathon-grid">
+          <div class="hackathon-left">
+            <h2 class="hackathon-title">DHANSARTHI</h2>
+            <span class="hackathon-sub">AI-POWERED FINANCIAL ADVISORY APPLICATION</span>
+            <p class="hackathon-desc">
+              DhanSarthi is an AI-powered financial advisory application designed to help users understand their income, expenses, loans, financial goals and risk profile, and receive personalized financial guidance.
+            </p>
+            <div class="tech-stack-pills">
+              <span class="skill-pill">React.js</span>
+              <span class="skill-pill">FastAPI</span>
+              <span class="skill-pill">PostgreSQL</span>
+              <span class="skill-pill">FAISS</span>
+              <span class="skill-pill">MiniLM</span>
+              <span class="skill-pill">RAG</span>
+              <span class="skill-pill">LLM API</span>
+            </div>
+          </div>
+
+          <div class="hackathon-right">
+            <div class="features-list-card">
+              <h4 class="features-title">KEY FEATURES</h4>
+              <ul class="features-ul">
+                <li><span class="check-mark">✓</span> <strong>Personalized Financial Advisor</strong></li>
+                <li><span class="check-mark">✓</span> <strong>Financial Document Analysis</strong></li>
+                <li><span class="check-mark">✓</span> <strong>RAG-based AI Responses</strong></li>
+                <li><span class="check-mark">✓</span> <strong>Budget & Expense Analysis</strong></li>
+                <li><span class="check-mark">✓</span> <strong>Savings Goal Planning</strong></li>
+                <li><span class="check-mark">✓</span> <strong>Risk-aware Recommendations</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & SKILLS / WORK PROCESS / QUOTE GRID SECTION -->
+    <section class="about-grid-section" id="skills">
+      <div class="about-three-col-grid">
+        
+        <!-- COLUMN 1: EDUCATION & SKILLS -->
+        <div class="grid-col col-education">
+          <h2 class="col-main-title">EDUCATION & SKILLS</h2>
+          
+          <div class="sub-block">
+            <h3 class="sub-title">EDUCATION</h3>
+            
+            <div class="edu-item">
+              <div class="edu-header">
+                <h4 class="edu-degree">B.Tech in Computer Science & Engineering</h4>
+                <span class="edu-years">2022 – PRESENT</span>
+              </div>
+              <p class="edu-institution">[YOUR COLLEGE / UNIVERSITY NAME]</p>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-header">
+                <h4 class="edu-degree">ADCA+ Computer Application Training</h4>
+                <span class="edu-years">COMPLETED</span>
+              </div>
+              <p class="edu-institution">Advanced Computer Application</p>
+            </div>
+          </div>
+
+          <!-- Skills Categorized -->
+          <div class="sub-block">
+            <h3 class="sub-title">DEVELOPMENT SKILLS</h3>
+            <div class="skills-category-block">
+              <span class="category-label">Frontend & Backend:</span>
+              <div class="skills-pill-group">
+                <span class="skill-pill">HTML5</span>
+                <span class="skill-pill">CSS3</span>
+                <span class="skill-pill">JAVASCRIPT</span>
+                <span class="skill-pill">REACT.JS</span>
+                <span class="skill-pill">NODE.JS</span>
+                <span class="skill-pill">EXPRESS.JS</span>
+                <span class="skill-pill">REST APIs</span>
+                <span class="skill-pill">AXIOS</span>
+                <span class="skill-pill">REACT ROUTER</span>
+              </div>
+            </div>
+
+            <div class="skills-category-block">
+              <span class="category-label">Databases:</span>
+              <div class="skills-pill-group">
+                <span class="skill-pill">MONGODB</span>
+                <span class="skill-pill">POSTGRESQL</span>
+              </div>
+            </div>
+
+            <div class="skills-category-block">
+              <span class="category-label">Programming & Problem Solving:</span>
+              <div class="skills-pill-group">
+                <span class="skill-pill">C++</span>
+                <span class="skill-pill">DSA</span>
+                <span class="skill-pill">PROBLEM SOLVING</span>
+              </div>
+            </div>
+
+            <div class="skills-category-block">
+              <span class="category-label">Tools & Version Control:</span>
+              <div class="skills-pill-group">
+                <span class="skill-pill">GIT</span>
+                <span class="skill-pill">GITHUB</span>
+                <span class="skill-pill">VS CODE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problem Solving Box -->
+          <div class="sub-block dsa-box">
+            <h3 class="sub-title">PROBLEM SOLVING & DSA</h3>
+            <p class="dsa-desc">
+              "I regularly practice Data Structures & Algorithms and programming problems in C++ to strengthen my logical thinking and coding skills."
+            </p>
+            <a href="https://leetcode.com/u/vishwakarmanitesh7/" target="_blank" rel="noopener noreferrer" class="leetcode-btn">
+              <span>VIEW LEETCODE PROFILE</span>
+              <span class="ext-icon">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: WORK PROCESS -->
+        <div class="grid-col col-process" id="process">
+          <h2 class="col-main-title">WORK PROCESS</h2>
+          
+          <div class="process-timeline">
+            
+            <!-- Step 01 -->
+            <div class="process-step">
+              <div class="step-num-icon">
+                <span class="step-num">01</span>
+                <div class="step-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+              </div>
+              <div class="step-content">
+                <h4 class="step-title">UNDERSTAND</h4>
+                <p class="step-desc">Understanding the problem and project requirements.</p>
+              </div>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="process-step">
+              <div class="step-num-icon">
+                <span class="step-num">02</span>
+                <div class="step-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A5 5 0 1 0 12 4a5 5 0 0 0-3.5 10.5M9 18h6M10 22h4"></path></svg>
+                </div>
+              </div>
+              <div class="step-content">
+                <h4 class="step-title">PLAN</h4>
+                <p class="step-desc">Planning features, architecture and user flow.</p>
+              </div>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="process-step">
+              <div class="step-num-icon">
+                <span class="step-num">03</span>
+                <div class="step-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                </div>
+              </div>
+              <div class="step-content">
+                <h4 class="step-title">BUILD</h4>
+                <p class="step-desc">Developing responsive frontend and backend functionality.</p>
+              </div>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="process-step">
+              <div class="step-num-icon">
+                <span class="step-num">04</span>
+                <div class="step-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+              </div>
+              <div class="step-content">
+                <h4 class="step-title">INTEGRATE</h4>
+                <p class="step-desc">Connecting APIs, databases and application services.</p>
+              </div>
+            </div>
+
+            <!-- Step 05 -->
+            <div class="process-step">
+              <div class="step-num-icon">
+                <span class="step-num">05</span>
+                <div class="step-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </div>
+              </div>
+              <div class="step-content">
+                <h4 class="step-title">TEST & DEPLOY</h4>
+                <p class="step-desc">Testing, fixing issues and preparing the application for deployment.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COLUMN 3: QUOTE BLOCK -->
+        <div class="grid-col col-quote-box">
+          <div class="quote-card">
+            <div class="quote-mark">“</div>
+            <p class="quote-body">
+              I don't just write code. I build solutions to real problems.
+            </p>
+            <div class="quote-signature">Nitesh</div>
+            <div class="quote-footer">
+              <span>LET'S BUILD SOMETHING GREAT TOGETHER.</span>
+              <span class="star-icon">✦</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer" id="contact">
+      <div class="footer-container">
+        
+        <!-- Top Footer Branding & Back To Top -->
+        <div class="footer-top">
+          <div class="footer-brand">
+            <span class="footer-brand-name">NITESH<span class="highlight">VISHWAKARMA</span></span>
+            <span class="footer-brand-tag">FULL STACK WEB DEVELOPER</span>
+          </div>
+          <button id="btnBackToTop" class="back-to-top-btn" title="Back to Top">
+            <span>BACK TO TOP</span>
+            <span class="arrow-up">↑</span>
+          </button>
+        </div>
+
+        <!-- Middle Footer Columns -->
+        <div class="footer-middle">
+          
+          <!-- Column 1: Bio & Status -->
+          <div class="footer-col col-bio">
+            <p class="footer-tagline">
+              Building practical web experiences with modern technologies.
+            </p>
+            <div class="footer-availability">
+              <span class="green-dot">●</span>
+              <span>OPEN TO INTERNSHIPS & FREELANCE</span>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Navigation -->
+          <div class="footer-col col-nav">
+            <h4 class="footer-heading">NAVIGATION</h4>
+            <ul class="footer-links">
+              <li><a href="#hero">HOME</a></li>
+              <li><a href="#about">ABOUT</a></li>
+              <li><a href="#projects">PROJECTS</a></li>
+              <li><a href="#skills">SKILLS</a></li>
+              <li><a href="#hackathon">HACKATHON</a></li>
+              <li><a href="#contact">CONTACT</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Social Links -->
+          <div class="footer-col col-social">
+            <h4 class="footer-heading">CONNECT</h4>
+            <ul class="footer-links">
+              <li><a href="https://github.com/Imniteshkumar7" target="_blank" rel="noopener noreferrer">GITHUB <span class="ext-arrow">↗</span></a></li>
+              <li><a href="https://www.linkedin.com/in/imniteshkumar/" target="_blank" rel="noopener noreferrer">LINKEDIN <span class="ext-arrow">↗</span></a></li>
+              <li><a href="https://leetcode.com/u/vishwakarmanitesh7/" target="_blank" rel="noopener noreferrer">LEETCODE <span class="ext-arrow">↗</span></a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Newsletter / Quick Contact -->
+          <div class="footer-col col-newsletter">
+            <h4 class="footer-heading">STAY IN TOUCH</h4>
+            <p class="newsletter-sub">Get updates on new web application builds & projects.</p>
+            <form id="newsletterForm" class="newsletter-form">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email" required class="newsletter-input" />
+              <button type="submit" class="newsletter-btn">CONNECT ⟶</button>
+            </form>
+            <div id="newsletterSuccess" class="newsletter-success hidden">✓ Thank you for connecting!</div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Copyright Row -->
+        <div class="footer-bottom">
+          <div class="copyright">
+            © 2026 NITESH VISHWAKARMA. ALL RIGHTS RESERVED.
+          </div>
+          <div class="footer-credits">
+            BUILT WITH REACT, NODE.JS & SMOOTH CANVAS ANIMATION.
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Detailed Project Case Study Modal -->
+  <div id="projectModal" class="project-modal">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <button id="btnCloseModal" class="modal-close">&times;</button>
+      <div class="modal-body">
+        <img id="modalImg" src="" alt="Project Preview" class="modal-img" />
+        <div class="modal-content">
+          <div class="modal-num" id="modalNum">01</div>
+          <h3 class="modal-title" id="modalTitle">Project Title</h3>
+          <p class="modal-cat" id="modalCat">Category</p>
+          
+          <div class="modal-sections-grid">
+            <div class="modal-sec">
+              <h4>PROJECT OVERVIEW</h4>
+              <p id="modalDesc">Overview text...</p>
+            </div>
+
+            <div class="modal-sec-row">
+              <div class="modal-sec">
+                <h4>PROBLEM</h4>
+                <p id="modalProblem">Problem text...</p>
+              </div>
+
+              <div class="modal-sec">
+                <h4>SOLUTION</h4>
+                <p id="modalSolution">Solution text...</p>
+              </div>
+            </div>
+
+            <div class="modal-sec">
+              <h4>KEY FEATURES</h4>
+              <ul id="modalFeatures" class="modal-features-list"></ul>
+            </div>
+
+            <div class="modal-sec">
+              <h4>TECH STACK</h4>
+              <div class="modal-tags" id="modalTags"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

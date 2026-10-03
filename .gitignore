@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.env
+.vscode/
+video_frames_30fps.zip
+*.zip
+public/frames/
