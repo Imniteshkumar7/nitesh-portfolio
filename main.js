@@ -138,20 +138,22 @@ let preloaderDismissed = false;
 function dismissPreloader() {
   if (preloaderDismissed) return;
   preloaderDismissed = true;
-  if (loader) loader.classList.add('fade-out');
-  resizeCanvas();
-  requestAnimationFrame(animationLoop);
+  setTimeout(() => {
+    if (loader) loader.classList.add('fade-out');
+    resizeCanvas();
+    requestAnimationFrame(animationLoop);
+  }, 300);
 }
 
 // Preload Images
 function preloadImages() {
   const circleLength = 276.46;
-  const FAST_LOAD_THRESHOLD = 10; // Open site as soon as 10 frames are ready
+  const LOAD_THRESHOLD = 40; // Balanced smooth pace (~2.5s)
 
-  // Maximum 1.2s timeout fallback so page NEVER gets stuck on slow connection
+  // Smooth fallback timeout (2.8 seconds)
   setTimeout(() => {
     dismissPreloader();
-  }, 1200);
+  }, 2800);
 
   for (let i = 1; i <= TOTAL_FRAMES; i++) {
     const img = new Image();
@@ -167,14 +169,14 @@ function preloadImages() {
       if (loaderPercent) loaderPercent.textContent = `${percentInt}%`;
       if (loaderBarFill) loaderBarFill.style.width = `${percentInt}%`;
 
-      if (loadedCount >= FAST_LOAD_THRESHOLD) {
+      if (loadedCount >= LOAD_THRESHOLD) {
         dismissPreloader();
       }
     };
 
     img.onerror = () => {
       loadedCount++;
-      if (loadedCount >= FAST_LOAD_THRESHOLD) {
+      if (loadedCount >= LOAD_THRESHOLD) {
         dismissPreloader();
       }
     };
