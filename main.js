@@ -68,7 +68,18 @@ window.addEventListener('resize', resizeCanvas);
 
 // Render Frame onto Canvas
 function renderFrame(index) {
-  const frameImg = images[index];
+  let frameImg = images[index];
+
+  // Fallback to nearest loaded frame if current frame is still downloading
+  if (!frameImg || !frameImg.complete) {
+    for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+      const prev = images[index - offset];
+      if (prev && prev.complete) { frameImg = prev; break; }
+      const next = images[index + offset];
+      if (next && next.complete) { frameImg = next; break; }
+    }
+  }
+
   if (!frameImg || !frameImg.complete) return;
 
   const width = window.innerWidth;
@@ -122,9 +133,25 @@ function animationLoop() {
   requestAnimationFrame(animationLoop);
 }
 
+let preloaderDismissed = false;
+
+function dismissPreloader() {
+  if (preloaderDismissed) return;
+  preloaderDismissed = true;
+  if (loader) loader.classList.add('fade-out');
+  resizeCanvas();
+  requestAnimationFrame(animationLoop);
+}
+
 // Preload Images
 function preloadImages() {
   const circleLength = 276.46;
+  const FAST_LOAD_THRESHOLD = 10; // Open site as soon as 10 frames are ready
+
+  // Maximum 1.2s timeout fallback so page NEVER gets stuck on slow connection
+  setTimeout(() => {
+    dismissPreloader();
+  }, 1200);
 
   for (let i = 1; i <= TOTAL_FRAMES; i++) {
     const img = new Image();
@@ -132,7 +159,7 @@ function preloadImages() {
     
     img.onload = () => {
       loadedCount++;
-      const progress = loadedCount / TOTAL_FRAMES;
+      const progress = Math.min(1, loadedCount / TOTAL_FRAMES);
       const offset = circleLength * (1 - progress);
       const percentInt = Math.round(progress * 100);
 
@@ -140,28 +167,20 @@ function preloadImages() {
       if (loaderPercent) loaderPercent.textContent = `${percentInt}%`;
       if (loaderBarFill) loaderBarFill.style.width = `${percentInt}%`;
 
-      if (loadedCount === TOTAL_FRAMES) {
-        onAllLoaded();
+      if (loadedCount >= FAST_LOAD_THRESHOLD) {
+        dismissPreloader();
       }
     };
 
     img.onerror = () => {
       loadedCount++;
-      if (loadedCount === TOTAL_FRAMES) {
-        onAllLoaded();
+      if (loadedCount >= FAST_LOAD_THRESHOLD) {
+        dismissPreloader();
       }
     };
 
     images.push(img);
   }
-}
-
-function onAllLoaded() {
-  setTimeout(() => {
-    if (loader) loader.classList.add('fade-out');
-    resizeCanvas();
-    requestAnimationFrame(animationLoop);
-  }, 400);
 }
 
 // Factual Real Projects Case Study Data
