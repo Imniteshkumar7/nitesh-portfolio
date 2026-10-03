@@ -138,22 +138,42 @@ let preloaderDismissed = false;
 function dismissPreloader() {
   if (preloaderDismissed) return;
   preloaderDismissed = true;
-  setTimeout(() => {
-    if (loader) loader.classList.add('fade-out');
-    resizeCanvas();
-    requestAnimationFrame(animationLoop);
-  }, 300);
+  if (loader) loader.classList.add('fade-out');
+  resizeCanvas();
+  requestAnimationFrame(animationLoop);
 }
 
 // Preload Images
 function preloadImages() {
   const circleLength = 276.46;
-  const LOAD_THRESHOLD = 40; // Balanced smooth pace (~2.5s)
+  let currentPercent = 0;
 
-  // Smooth fallback timeout (2.8 seconds)
-  setTimeout(() => {
-    dismissPreloader();
-  }, 2800);
+  // Smooth interval that guarantees percentage counts continuously to 100%
+  const progressInterval = setInterval(() => {
+    // Target percentage based on actual loaded frames (minimum steady progress over time)
+    const rawLoadedPct = Math.round((loadedCount / TOTAL_FRAMES) * 100);
+    
+    // Allow progress to steadily advance towards 100%
+    if (currentPercent < 100) {
+      // Step size calculation: advance steadily, speed up as frames arrive
+      const targetPct = Math.max(rawLoadedPct, currentPercent + 2);
+      const step = Math.max(1, Math.ceil((targetPct - currentPercent) * 0.3));
+      currentPercent = Math.min(100, currentPercent + step);
+
+      const offset = circleLength * (1 - (currentPercent / 100));
+      if (ringProgress) ringProgress.style.strokeDashoffset = offset;
+      if (loaderPercent) loaderPercent.textContent = `${currentPercent}%`;
+      if (loaderBarFill) loaderBarFill.style.width = `${currentPercent}%`;
+    }
+
+    // Once 100% is reached, stop interval and dismiss preloader smoothly
+    if (currentPercent >= 100) {
+      clearInterval(progressInterval);
+      setTimeout(() => {
+        dismissPreloader();
+      }, 250);
+    }
+  }, 35);
 
   for (let i = 1; i <= TOTAL_FRAMES; i++) {
     const img = new Image();
@@ -161,24 +181,10 @@ function preloadImages() {
     
     img.onload = () => {
       loadedCount++;
-      const progress = Math.min(1, loadedCount / TOTAL_FRAMES);
-      const offset = circleLength * (1 - progress);
-      const percentInt = Math.round(progress * 100);
-
-      if (ringProgress) ringProgress.style.strokeDashoffset = offset;
-      if (loaderPercent) loaderPercent.textContent = `${percentInt}%`;
-      if (loaderBarFill) loaderBarFill.style.width = `${percentInt}%`;
-
-      if (loadedCount >= LOAD_THRESHOLD) {
-        dismissPreloader();
-      }
     };
 
     img.onerror = () => {
       loadedCount++;
-      if (loadedCount >= LOAD_THRESHOLD) {
-        dismissPreloader();
-      }
     };
 
     images.push(img);
